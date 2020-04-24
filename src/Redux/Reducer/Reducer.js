@@ -5,10 +5,18 @@ const LoginDetail={
 }
 
 const Reducer=(state=LoginDetail,action)=>{
-    if(action.type.UName!==state.UserName)
+  
+      
+    if(action.type.UName )
     return{UserName:action.type.UName}
-    if(action.type.PWord!==state.PassWord)
-    return{PassWord:action.type.PWord}
+
+    if(action.type.PWord )
+    return{PassWord:action.type.PWord}  
+
+    if(action.type='INCREMENT')
+    return{cart:state.cart+1}
+  
+
     console.log(state);
     return state;
 }

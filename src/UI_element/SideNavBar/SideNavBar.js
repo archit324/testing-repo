@@ -12,11 +12,11 @@ class SideNavBar extends Component {
             <NavItem>
               {this.props.Types.map(ele=>{
                 return(
-                <NavLink  className="NavLink"><Link className="InsideLink" to={"/items/"+ele} value="Link">{ele}</Link></NavLink>
+                <NavLink  className="NavLink" key={ele}><Link className="InsideLink" to={"/items/"+ele+"/"+this.props.Sid} value="Link">{ele}</Link></NavLink>
                 )})}
             </NavItem>
           </Nav>
-          <hr />
+          {/* <hr /> */}
           {/* <p>Link based</p>
           <Nav vertical>
         <NavItem>

@@ -4,17 +4,30 @@ import ItemDiv from './ItemDiv';
 import {Row} from 'react-bootstrap';
 class Items extends Component {
     state={
-        posts:[]
+        posts:[],
+        filterPost:[]
     }
     componentDidMount(){
-        axios.get("http://localhost:3001/posts").then(res=>{
+        // console.log("once")
+        axios.get("db.json").then(res=>{
         this.setState({
-            posts:res.data
+            posts:res.data.posts,
+            filterPost:res.data.posts
         })    
     })  
     }
+    
+    // componentDidUpdate=()=>{
+    //   var fp
+    //     if(this.props.match.params.id){
+    //      fp= this.state.posts.filter((post)=>{return post.Type===this.props.match.params.id}) 
+    //       this.setState({
+    //           filterPost:fp
+    //       })
+    //     }
+    // }
     render() {
-        console.log(this.props.match.params.id);
+        // console.log(this.props.match.params.id);
       
         return (
             <div>
@@ -30,7 +43,7 @@ class Items extends Component {
                     )
                 })} */}
                 <Row>
-                <ItemDiv itemsdetail={this.state.posts}></ItemDiv>
+                <ItemDiv itemsdetail={this.props.match.params.id ? this.state.posts.filter((post)=>{return post[this.props.match.params.Sid]===this.props.match.params.id}):this.state.posts}></ItemDiv>
                 </Row>
             </div>
 
